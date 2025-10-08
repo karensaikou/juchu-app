@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+
+
+<div class="container">
+
+
+    <h4 style="color:#4c5556">登録内容の削除</h4>
+
+    <form method = "POST">
+        {% csrf_token %}
+        <br>
+        <p style="color:#e64d52;">この登録内容を削除していいですか？</p>
+        <br>
+        <p>製品名：{{ delete_html.product_name }}</p>
+        <p>受注日：{{ delete_html.order_date | date:"Y年m月d日" }}</p>
+        <p>希望数量：{{ delete_html.requested_delivery_date | date:"Y年m月d日" }}</p>
+        <p>受注数量：{{ delete_html.number_of_orders }}</p>
+        <p>出荷日：{{ delete_html.shipping_date | date:"Y年m月d日" }}</p>
+        <p>納入日：{{ delete_html.actual_delivery_date | date:"Y年m月d日" }}</p>
+        <p>配車状況：{{ delete_html.get_vehicle_dispatch_display }}</p>
+        <br>
+        <button type = "submit" class="btn btn-outline-danger">削除</button>
+    </form>
+
+
+    <br>
+    <p><a href = "{% url 'juchu:order_detail' delete_html.id %}" class="btn btn-outline-secondary">詳細へ戻る</a></p>
+
+</div>
+
+{% endblock %}

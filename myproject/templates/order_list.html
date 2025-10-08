@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+
+
+    <h4 style="color:#4c5556">受注登録済みリスト</h4>
+    <br>
+    
+    <p>&nbsp;&nbsp; 受注日 製品名 受注数量</p>
+    
+    <ol>
+        {% for list in list_html %}
+        <li>
+            {{ list.order_date | date:"Y年m月d日"}} : 
+            <a href = "{% url 'juchu:order_detail' list.id %}">{{ list.product_name }}</a> 
+            &nbsp;受注数量{{ list.number_of_orders }}
+            {% if list.is_delivered %}
+                &nbsp;&nbsp;【納品完了】
+            {% endif %}
+        </li>
+
+
+        {% empty %}
+        <p>登録された受注データはひとつもありません。</p>
+
+        {% endfor %}
+
+        <br>
+        <p><a href = "{% url 'juchu:index' %}" class="btn btn-outline-secondary">戻る</a></p>
+
+
+    </ol>
+
+</div>
+
+{% endblock %}

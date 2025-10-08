@@ -1,0 +1,25 @@
+{% extends "base.html"%}
+
+{% block body %}
+
+
+<div class="container">
+
+    <h4 style="color:#4c5556">受注登録内容</h4>
+    <br>
+
+    <form method = "POST">
+        {% csrf_token %}
+        {{ create_html.as_p }}
+        <br>
+        <button type = "submit" class="btn btn-outline-primary">登録</button>
+    </form>
+
+    <br>
+
+    <p><a href = "{% url 'juchu:index' %}" class="btn btn-outline-secondary">戻る</a></p>
+
+</div>
+
+
+{% endblock %}

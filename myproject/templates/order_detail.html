@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+
+
+    <p>製品名：{{ detail_html.product_name }}</p>
+    <p>受注日：{{ detail_html.order_date | date:"Y年m月d日" }}</p>
+    <p>希望納期：{{ detail_html.requested_delivery_date | date:"Y年m月d日" }}</p>
+    <p>受注数量：{{ detail_html.number_of_orders }}</p>
+    <p>出荷日：{{ detail_html.shipping_date | date:"Y年m月d日" }}</p>
+    <p>納入日：{{ detail_html.actual_delivery_date | date:"Y年m月d日" }}</p>
+    <p>配車状況：{{ detail_html.get_vehicle_dispatch_display }}</p>
+    <br>
+    <br>
+    <p><a href = "{% url 'juchu:order_update' detail_html.id %}" class="btn btn-outline-warning">変更</a></p>
+    <p><a href = "{% url 'juchu:order_delete' detail_html.id %}" class="btn btn-outline-danger">削除</a></p>
+    <p><a href = "{% url 'juchu:order_list' %}" class="btn btn-outline-secondary">一覧へ戻る</a></p>
+
+</div>
+
+{% endblock %}
+
+
+
